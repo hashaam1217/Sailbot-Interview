@@ -31,4 +31,4 @@ jobs:
     - name: Run
       run: |
         cd /home/runner/work/Sailbot-Interview/Sailbot-Interview/c-cpp
-        test_standard_calc.o
+        ./test_standard_calc.o
