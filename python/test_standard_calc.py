@@ -46,9 +46,9 @@ def test_bound_to_180(angle, expected):
 
 
 @pytest.mark.parametrize("first_angle, middle_angle, second_angle, expected", [
-    (0, 1, 2, 1), 
+    (0, 1, 2, 1),
     (90, 180, 190, 1),
-    (45, 90, 135, 1), 
+    (45, 90, 135, 1),
     (160, 0, 180, 0),
     (0, 90, 180, 1),
     (0, 180, 270, 0),
@@ -60,4 +60,3 @@ def test_bound_to_180(angle, expected):
     ])
 def test_between_basic1(first_angle, middle_angle, second_angle, expected):
     assert is_angle_between(first_angle, middle_angle, second_angle) == expected
-

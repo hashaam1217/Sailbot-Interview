@@ -17,7 +17,6 @@ def bound_to_180(angle):
     angle_radians = math.radians(angle)
 
     bounded_angle_radians = 2 * math.atan(math.tan(0.5 * angle_radians))
-
     if round(math.degrees(bounded_angle_radians), 1) == 180.0:
         bounded_angle_radians *= -1
 
@@ -39,17 +38,16 @@ def is_angle_between(first_angle, middle_angle, second_angle):
     Returns:
         bool: True when `middle_angle` is not in the reflex angle of `first_angle` and `second_angle`, false otherwise.
     """
-    #Checks for all conditions
-    
-    #Edge cases
-    #(Since a reflex angle is less than 360 but greater than 180 so no reflex angle exists)
+    # Checks for all conditions
+
+    # Edge cases
+    # (Since a reflex angle is less than 360 but greater than 180 so no reflex angle exists)
     angle_difference = abs(second_angle - first_angle)
     if angle_difference in [0, 180, 360]:
         return True
 
-
     normal_reflex = (abs(second_angle - first_angle) > 180)
     between_normal_angle = (second_angle > middle_angle > first_angle)
 
-    #Logic joining conditions, here a simple XOR gate should be enough
-    return normal_reflex ^ between_normal_angle 
+    # Logic joining conditions, here a simple XOR gate should be enough
+    return normal_reflex ^ between_normal_angle
