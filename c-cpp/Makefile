@@ -1,6 +1,6 @@
 CC = g++
 CFLAGS = -Wall -I/../third-party/googletest/include
-LDFLAGS = -L/../third-party/googletest/lib -lgtest
+LDFLAGS = -L/../third-party/googletest/googletest/lib -lgtest
 
 all:
 	$(CC) gtest_standard_calc.cpp $(CFLAGS) $(LDFLAGS) -o gtest_standard_calc.o
