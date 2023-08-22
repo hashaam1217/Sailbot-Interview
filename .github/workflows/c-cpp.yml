@@ -27,8 +27,6 @@ jobs:
         make
         sudo make install
     - name: Compile
-      run: make -C c-cpp
-    - name: Run
       run: |
-        cd /home/runner/work/Sailbot-Interview/c-cpp
+        make -C c-cpp
         ./test_standard_calc.o
