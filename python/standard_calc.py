@@ -37,7 +37,19 @@ def is_angle_between(first_angle, middle_angle, second_angle):
         second_angle (float): The second bounding angle in degrees.
 
     Returns:
-        bool: True when `middle_angle` is not in the reflex angle of
-        `first_angle` and `second_angle`, false otherwise.
+        bool: True when `middle_angle` is not in the reflex angle of `first_angle` and `second_angle`, false otherwise.
     """
-    return True
+    #Checks for all conditions
+    
+    #Edge cases
+    #(Since a reflex angle is less than 360 but greater than 180 so no reflex angle exists)
+    angle_difference = abs(second_angle - first_angle)
+    if angle_difference in [0, 180, 360]:
+        return True
+
+
+    normal_reflex = (abs(second_angle - first_angle) > 180)
+    between_normal_angle = (second_angle > middle_angle > first_angle)
+
+    #Logic joining conditions, here a simple XOR gate should be enough
+    return normal_reflex ^ between_normal_angle 
