@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -Wall -I../third-party/googletest/googletest/include
+CFLAGS = -Wall -I../third-party/googletest/build/googletest/include
 LDFLAGS = -L../third-party/googletest/lib -lgtest 
 
 all:
