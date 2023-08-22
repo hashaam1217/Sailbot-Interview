@@ -2,6 +2,7 @@
 #include "standard_calc.h"
 #include <iostream> 
 #include <cmath>
+#include <gtest/gtest.h>
 
 #define M_PI 3.14159265358979323846
 
@@ -19,17 +20,18 @@ using namespace std;
  * @return float: The bounded angle in degrees.
  */
 float bound_to_180(float angle) {
-    float angle_radians = angle * 180 / M_PI;
-    float bounded_angle_radians = 2.0 * atan(tan(0.5 * angle_radians));
-    
-    bounded_angle_radians = round(bounded_angle_radians * 10 / 10);
+    float angle_radians = angle * M_PI / 180;
+    float bounded_angle= 2.0 * atan(tan(0.5 * angle_radians));
 
-    if (bounded_angle_radians == 180.0)
+    if (bounded_angle == -180.0)
     {
-        bounded_angle_radians *= -1;
+        bounded_angle*= -1;
     }
 
-    return bounded_angle_radians;
+    bounded_angle *= 180 / M_PI;
+    bounded_angle = round(bounded_angle* 10 / 10);
+
+    return bounded_angle;
 }
 
 /**
@@ -45,5 +47,23 @@ float bound_to_180(float angle) {
  * @return bool: TRUE when `middle_angle` is not in the reflex angle of `first_angle` and `second_angle`, FALSE otherwise
  */
 bool is_angle_between(float first_angle, float middle_angle, float second_angle) {
-    return true;
+    
+    float angle_difference = abs(second_angle - first_angle);
+
+    if (angle_difference == 0.0 || angle_difference == 180.0 || angle_difference == 360.0)
+    {
+        return true;
+    }
+
+    bool normal_reflex = (angle_difference > 180);
+    bool between_normal_angle = (second_angle > middle_angle && middle_angle > first_angle);
+
+    return normal_reflex ^ between_normal_angle;
+}
+
+
+int main (void)
+{
+    ::testing::InitGoogleTest();
+    return RUN_ALL_TESTS();
 }
