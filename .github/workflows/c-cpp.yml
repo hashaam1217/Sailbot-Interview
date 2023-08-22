@@ -13,7 +13,23 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake  
+    - name: Build Google Test
+      run: |
+        git submodule init
+        git submodule update
+        cd ../Sailbot-Interview/third-party/googletest
+        mkdir build && cd build
+        cmake ../
+        make
+        sudo make install
     - name: Compile
-      run: make -C c-cpp
+      run: |
+        make -C c-cpp
     - name: Run
-      run: c-cpp/test_standard_calc.o
+      run: |
+        cd /home/runner/work/Sailbot-Interview/Sailbot-Interview/c-cpp/
+        ./gtest_standard_calc.o
