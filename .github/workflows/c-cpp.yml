@@ -14,6 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Compile
-      run: make -C c-cpp
+      run: make
     - name: Run
       run: c-cpp/test_standard_calc.o
