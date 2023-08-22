@@ -1,5 +1,11 @@
 #include "stdbool.h"
 #include "standard_calc.h"
+#include <iostream> 
+#include <cmath>
+
+#define M_PI 3.14159265358979323846
+
+using namespace std;
 
 /**
  * @brief Bounds the provided angle between [-180, 180) degrees.
@@ -13,7 +19,17 @@
  * @return float: The bounded angle in degrees.
  */
 float bound_to_180(float angle) {
-    return 0;
+    float angle_radians = angle * 180 / M_PI;
+    float bounded_angle_radians = 2.0 * atan(tan(0.5 * angle_radians));
+    
+    bounded_angle_radians = round(bounded_angle_radians * 10 / 10);
+
+    if (bounded_angle_radians == 180.0)
+    {
+        bounded_angle_radians *= -1;
+    }
+
+    return bounded_angle_radians;
 }
 
 /**
