@@ -21,7 +21,7 @@ jobs:
       run: |
         git submodule init
         git submodule update
-        cd ../third-party/googletest
+        cd ../Sailbot-Interview/third-party/googletest
         mkdir build && cd build
         cmake ../
         make
