@@ -31,4 +31,5 @@ jobs:
         make -C c-cpp
     - name: Run
       run: |
+        cd /home/runner/work/Sailbot-Interview/Sailbot-Interview/c-cpp/
         ./gtest_standard_calc.o
