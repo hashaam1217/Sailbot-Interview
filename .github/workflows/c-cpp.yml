@@ -29,4 +29,6 @@ jobs:
     - name: Compile
       run: make -C c-cpp
     - name: Run
-      run: c-cpp/test_standard_calc.o
+      run: |
+        cd /home/runner/work/Sailbot-Interview/Sailbot-Interview/c-cpp
+        test_standard_calc.o
