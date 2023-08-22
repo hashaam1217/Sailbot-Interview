@@ -29,4 +29,6 @@ jobs:
     - name: Compile
       run: |
         make -C c-cpp
-        ./test_standard_calc.o
+    - name: Run
+      run: |
+        ./gtest_standard_calc.o
